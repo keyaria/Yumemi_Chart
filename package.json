@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-typescript-jest",
+  "name": "Yumemi Chart App",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Yumemi code check application",
   "version": "0.1.0",
-  "author": "Keith Denning <keithdenning1@gmail.com>",
+  "author": "Keyaria Walker",
   "dependencies": {
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
@@ -54,12 +54,5 @@
     "test": "jest",
     "type-check": "tsc --noEmit",
     "lint": "eslint **/*.tsx"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/denningk/gatsby-starter-typescript-jest"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
