@@ -2,9 +2,9 @@
 
 1.  **Set Up Initial Site with Typescript and testing**  :heavy_check_mark:
 
-2.  **Fetch Data from API** (started)
+2.  **Fetch Data from API** :heavy_check_mark:
 
-3.  **Generate checkboxes**
+3.  **Generate checkboxes** :heavy_check_mark:
 
 4. **Generate Graph and complete functionality**
 
