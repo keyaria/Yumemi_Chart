@@ -6,9 +6,11 @@
 
 3.  **Generate checkboxes** :heavy_check_mark:
 
-4. **Generate Graph and complete functionality**
+4. **Generate Graph and complete functionality** started
 
-5.  **Implement page design**
+5. **Add Testing**
+
+6.  **Implement page design**
 
 ### Tech Stack
 
