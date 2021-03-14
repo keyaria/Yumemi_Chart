@@ -4,18 +4,18 @@ import * as React from "react"
 const Header = (props: HeaderProps) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `#D6EAF8`,
       marginBottom: `1.45rem`,
     }}
   >
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
+        display: `flex`,
+        justifyContent: `center`,
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1 style={{ margin: 0, display: ` inline-block` }}>
         <Link
           to="/"
           style={{

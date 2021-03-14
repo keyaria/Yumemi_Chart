@@ -5,7 +5,9 @@ import { ResponsiveLine } from "@nivo/line"
 const Graph = ({ data }: any) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+    data-testid="graph"
+    margin={{ top: 50, right: 110, bottom: 50, left: 80 }}
+    colors={{ scheme: "pastel1" }}
     xScale={{ type: "point" }}
     yScale={{
       type: "linear",
@@ -22,7 +24,7 @@ const Graph = ({ data }: any) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "transportation",
+      legend: "年度",
       legendOffset: 36,
       legendPosition: "middle",
     }}
@@ -31,8 +33,8 @@ const Graph = ({ data }: any) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "count",
-      legendOffset: -40,
+      legend: "人口数",
+      legendOffset: -70,
       legendPosition: "middle",
     }}
     pointSize={10}
@@ -43,7 +45,7 @@ const Graph = ({ data }: any) => (
     useMesh={true}
     legends={[
       {
-        anchor: "bottom-right",
+        anchor: "top-right",
         direction: "column",
         justify: false,
         translateX: 100,
