@@ -8,7 +8,9 @@ import SEO from "../components/seo"
 import Graph from "../components/graph"
 
 import { graphql, useStaticQuery } from "gatsby"
-const IndexPage = () => {
+
+
+const Index = (props: any) => {
   const data = useStaticQuery(graphql`
     query {
       prefecturesField {
@@ -19,9 +21,26 @@ const IndexPage = () => {
         }
       }
     }
-  `)
-  const [graphList, setGraphList] = useState([])
+  `);
+  //console.log(props.data, "sdfewee", data);
+  let prefectures = JSON.parse(props.data.prefecturesField.prefData  || data.prefecturesField.prefData)
 
+  return <IndexPage  prefectures={prefectures} />
+}
+export const IndexPage = ({prefectures}: any) => {
+console.log(prefectures)
+  const [graphList, setGraphList] = useState([])
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     prefecturesField {
+  //       prefData
+  //       internal {
+  //         contentDigest
+  //         content
+  //       }
+  //     }
+  //   }
+  // `);
   // Will have to reconfigure to use useEffect as rerender is not triggered
   const getGraphData = (e: any) => {
     let prefName = e.target.name
@@ -51,30 +70,30 @@ const IndexPage = () => {
         setGraphList([...graphList, graphPlots])
       })
   }
-  let prefectures = JSON.parse(data.prefecturesField.prefData)
-  return (
-    <Layout>
-      <SEO title="Home" />
+  return(
+    <div>
+
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         {prefectures.map((prefecture: any) => (
-          <div>
+          <div key={prefecture.prefCode}>
             <input
               type="checkbox"
+              data-testid="gatsby-logo"
               key={prefecture.prefCode}
               id={prefecture.prefCode}
               name={prefecture.prefName}
               value={prefecture.prefCode}
               onClick={event => getGraphData(event)}
             />
-            <label for={prefecture.prefName}> {prefecture.prefName}</label>
+            <label > {prefecture.prefName}</label>
           </div>
         ))}
       </div>
       <div style={{ height: `500px`, width: `80%` }}>
         <Graph data={graphList} />
       </div>
-    </Layout>
-  )
+    </div>
+  );
 }
 
-export default IndexPage
+export default Index

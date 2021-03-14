@@ -2,7 +2,7 @@ import * as React from "react"
 import { ResponsiveLine } from "@nivo/line"
 
 //go back and declare type
-const Graph = ({ data: any }) => (
+const Graph = ({ data }: any) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
