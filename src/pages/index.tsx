@@ -2,15 +2,12 @@ import * as React from "react"
 import { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 import Graph from "../components/graph"
 import Header from "../components/header"
 import { graphql, useStaticQuery } from "gatsby"
 import "../components/index.scss"
 
-const Index = (props: any) => {
+const Index = (props: {data: {prefecturesField: {prefData: string}}} ) => {
   const data = useStaticQuery(graphql`
     query {
       prefecturesField {
@@ -22,17 +19,15 @@ const Index = (props: any) => {
       }
     }
   `)
-  //  console.log(props.data, "sdfewee", data)
-  //  props.data ? props.data.prefecturesField.prefData :
+
   const prefectures = JSON.parse(
     props.data !== undefined
       ? props.data.prefecturesField.prefData
       : data.prefecturesField.prefData
   )
-
   return <IndexPage prefectures={prefectures} />
 }
-export const IndexPage = ({ prefectures }: any) => {
+export const IndexPage = ({prefectures}: IndexProps) => {
   const [graphList, setGraphList] = useState([])
 
   const getGraphData = (e: any) => {
@@ -53,6 +48,7 @@ export const IndexPage = ({ prefectures }: any) => {
       )
         .then(response => response.json())
         .then(resultData => {
+          console.log('resultdata', resultData)
           const result = resultData.result.data[0]
           const graphPlots = {
             id: prefName,
@@ -65,6 +61,7 @@ export const IndexPage = ({ prefectures }: any) => {
           }
           setGraphList([...graphList, graphPlots])
         })
+        console.log('entered')
     }
   }
   return (
@@ -98,7 +95,7 @@ export const IndexPage = ({ prefectures }: any) => {
         </div>
         <div style={{ height: `500px` }} className="graph">
           {graphList.length > 0 ? (
-            <Graph data={graphList} />
+            <Graph data={graphList}     data-testid="graph"/>
           ) : (
             <h1> 都道府県の追加</h1>
           )}
@@ -109,10 +106,10 @@ export const IndexPage = ({ prefectures }: any) => {
 }
 
 interface IndexProps {
-  prefectures: {
-    prefCode: number
+  prefectures: Array<{
+    prefCode: string,
     prefName: string
-  }
+  }>
 }
 
 export default Index

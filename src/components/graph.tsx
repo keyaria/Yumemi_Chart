@@ -1,8 +1,8 @@
+//@ts-nocheck
 import * as React from "react"
-import { ResponsiveLine } from "@nivo/line"
+import { ResponsiveLine, LineProps } from "@nivo/line"
 
-//go back and declare type
-const Graph = ({ data }: any) => (
+const Graph = ({ data}: any) => (
   <ResponsiveLine
     data={data}
     data-testid="graph"
@@ -71,4 +71,5 @@ const Graph = ({ data }: any) => (
     ]}
   />
 )
+
 export default Graph
