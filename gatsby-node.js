@@ -26,3 +26,13 @@
      },
    })
  }
+
+ exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type prefecturesField implements Node {
+      prefData: String
+    }
+  `
+  createTypes(typeDefs)
+}

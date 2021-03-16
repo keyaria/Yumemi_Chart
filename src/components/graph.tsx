@@ -1,8 +1,7 @@
-//@ts-nocheck
 import * as React from "react"
 import { ResponsiveLine, LineProps } from "@nivo/line"
 
-const Graph = ({ data}: any) => (
+const Graph = ({ data }: LineProps) => (
   <ResponsiveLine
     data={data}
     data-testid="graph"

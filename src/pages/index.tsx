@@ -1,13 +1,12 @@
 import * as React from "react"
-import { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import { useState } from "react"
 
 import Graph from "../components/graph"
 import Header from "../components/header"
 import { graphql, useStaticQuery } from "gatsby"
 import "../components/index.scss"
 
-const Index = (props: {data: {prefecturesField: {prefData: string}}} ) => {
+const Index = (props: { data: { prefecturesField: { prefData: string } } }) => {
   const data = useStaticQuery(graphql`
     query {
       prefecturesField {
@@ -27,7 +26,7 @@ const Index = (props: {data: {prefecturesField: {prefData: string}}} ) => {
   )
   return <IndexPage prefectures={prefectures} />
 }
-export const IndexPage = ({prefectures}: IndexProps) => {
+export const IndexPage = ({ prefectures }: IndexProps) => {
   const [graphList, setGraphList] = useState([])
 
   const getGraphData = (e: any) => {
@@ -48,7 +47,6 @@ export const IndexPage = ({prefectures}: IndexProps) => {
       )
         .then(response => response.json())
         .then(resultData => {
-          console.log('resultdata', resultData)
           const result = resultData.result.data[0]
           const graphPlots = {
             id: prefName,
@@ -61,19 +59,15 @@ export const IndexPage = ({prefectures}: IndexProps) => {
           }
           setGraphList([...graphList, graphPlots])
         })
-        console.log('entered')
     }
   }
   return (
     <div>
       <Header siteTitle={"人口構成"} />
       <div className="container">
-        <h1 style={{ fontSize: `30px`, marginBottom: `40px` }}>
-          {" "}
-          都道府県{" "}
-        </h1>
+        <h1 style={{ fontSize: `30px`, marginBottom: `40px` }}> 都道府県 </h1>
         <div style={{ marginBottom: `1.45rem` }} className="check">
-          {prefectures.map(
+          {prefectures !== null && prefectures.map(
             (prefecture: { prefCode: string; prefName: string }) => (
               <div key={prefecture.prefCode} className="checkbox path">
                 <input
@@ -95,7 +89,7 @@ export const IndexPage = ({prefectures}: IndexProps) => {
         </div>
         <div style={{ height: `500px` }} className="graph">
           {graphList.length > 0 ? (
-            <Graph data={graphList}     data-testid="graph"/>
+            <Graph data={graphList} data-testid="graph" />
           ) : (
             <h1> 都道府県の追加</h1>
           )}
@@ -107,7 +101,7 @@ export const IndexPage = ({prefectures}: IndexProps) => {
 
 interface IndexProps {
   prefectures: Array<{
-    prefCode: string,
+    prefCode: string
     prefName: string
   }>
 }
